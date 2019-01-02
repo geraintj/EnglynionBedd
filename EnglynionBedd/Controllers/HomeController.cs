@@ -19,21 +19,17 @@ namespace EnglynionBedd.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LlwythoDelwedd(IFormFile file)
+        public async Task<IActionResult> LlwythoDelwedd(IFormFile ffeil)
         {
             var gwybodaeth = new GwybodaethDelwedd();
 
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
+            if (ffeil == null || ffeil.Length == 0)
+                return Content("heb ddewis ffeil");
 
-            var path = Path.Combine(
-                Directory.GetCurrentDirectory(), "wwwroot",
-                file.FileName);
-
-            using (var stream = new MemoryStream())
+            using (var ffrwd = new MemoryStream())
             {
-                await file.CopyToAsync(stream);
-                gwybodaeth.Delwedd = stream.ToArray();
+                await ffeil.CopyToAsync(ffrwd);
+                gwybodaeth.Delwedd = ffrwd.ToArray();
             }
 
             return View(gwybodaeth);
