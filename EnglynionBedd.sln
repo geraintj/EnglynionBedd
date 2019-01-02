@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglynionBedd", "EnglynionBedd\EnglynionBedd.csproj", "{EC5DD47F-7646-4D68-9B5E-6BDE37835F9B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnglynionBedd", "EnglynionBedd\EnglynionBedd.csproj", "{EC5DD47F-7646-4D68-9B5E-6BDE37835F9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglynionBedd.Gwasanaethau", "EnglynionBedd.Gwasanaethau\EnglynionBedd.Gwasanaethau.csproj", "{6EEF677E-EF43-46ED-9A1D-DA60D094830D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EnglynionBedd.Endidau", "EnglynionBedd.Endidau\EnglynionBedd.Endidau.csproj", "{3EF05590-2241-450C-BA4B-976B7B7D36E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{EC5DD47F-7646-4D68-9B5E-6BDE37835F9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EC5DD47F-7646-4D68-9B5E-6BDE37835F9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EC5DD47F-7646-4D68-9B5E-6BDE37835F9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6EEF677E-EF43-46ED-9A1D-DA60D094830D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6EEF677E-EF43-46ED-9A1D-DA60D094830D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6EEF677E-EF43-46ED-9A1D-DA60D094830D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6EEF677E-EF43-46ED-9A1D-DA60D094830D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3EF05590-2241-450C-BA4B-976B7B7D36E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3EF05590-2241-450C-BA4B-976B7B7D36E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3EF05590-2241-450C-BA4B-976B7B7D36E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3EF05590-2241-450C-BA4B-976B7B7D36E6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

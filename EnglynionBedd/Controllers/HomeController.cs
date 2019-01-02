@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EnglynionBedd.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace EnglynionBedd.Controllers
 {
@@ -15,24 +18,28 @@ namespace EnglynionBedd.Controllers
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public async Task<IActionResult> LlwythoDelwedd(IFormFile file)
         {
-            ViewData["Message"] = "Your application description page.";
+            var gwybodaeth = new GwybodaethDelwedd();
 
-            return View();
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
+
+            var path = Path.Combine(
+                Directory.GetCurrentDirectory(), "wwwroot",
+                file.FileName);
+
+            using (var stream = new MemoryStream())
+            {
+                await file.CopyToAsync(stream);
+                gwybodaeth.Delwedd = stream.ToArray();
+            }
+
+            return View(gwybodaeth);
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+        
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,0 +1,56 @@
+﻿@model EnglynionBedd.Models.GwybodaethDelwedd
+
+@{
+    var base64 = Convert.ToBase64String(Model.Delwedd);
+    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+}
+
+
+<h2>LlwythoDelwedd</h2>
+
+<h4>GwybodaethDelwedd</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="LlwythoDelwedd">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <img src="@imgSrc" />
+            </div>
+            <div class="form-group">
+                <label asp-for="status" class="control-label"></label>
+                <input asp-for="status" class="form-control" />
+                <span asp-validation-for="status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="succeeded" /> @Html.DisplayNameFor(model => model.succeeded)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="failed" /> @Html.DisplayNameFor(model => model.failed)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input asp-for="finished" /> @Html.DisplayNameFor(model => model.finished)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
