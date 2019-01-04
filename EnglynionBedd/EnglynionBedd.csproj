@@ -14,4 +14,9 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\EnglynionBedd.Endidau\EnglynionBedd.Endidau.csproj" />
+    <ProjectReference Include="..\EnglynionBedd.Gwasanaethau\EnglynionBedd.Gwasanaethau.csproj" />
+  </ItemGroup>
+
 </Project>

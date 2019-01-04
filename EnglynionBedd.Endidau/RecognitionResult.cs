@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace EnglynionBedd.Models
+namespace EnglynionBedd.Endidau
 {
     public class RecognitionResult
     {

@@ -1,4 +1,4 @@
-﻿@model EnglynionBedd.Models.GwybodaethDelwedd
+﻿@model EnglynionBedd.Endidau.GwybodaethDelwedd
 
 @{
     var base64 = Convert.ToBase64String(Model.Delwedd);
@@ -10,9 +10,9 @@
 
 <h4>GwybodaethDelwedd</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="LlwythoDelwedd">
+<form asp-action="LlwythoDelwedd">
+    <div class="row">
+        <div class="col-md-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <img src="@imgSrc" />
@@ -46,9 +46,19 @@
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>
-        </form>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                @{
+                    foreach (var line in Model.recognitionResult.lines)
+                    {
+                        <input class="form-control" value="@line.text"/>
+                    }
+                }
+            </div>
+        </div>
     </div>
-</div>
+</form>
 
 <div>
     <a asp-action="Index">Back to List</a>

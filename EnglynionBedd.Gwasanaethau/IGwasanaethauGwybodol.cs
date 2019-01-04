@@ -5,6 +5,6 @@ namespace EnglynionBedd.Gwasanaethau
 {
     public interface IGwasanaethauGwybodol
     {
-        Task<GwybodaethDelwedd> DadansoddiTestun(byte[] delwedd);
+        Task<GwybodaethDelwedd> DadansoddiTestun(byte[] delwedd, bool argraffedig);
     }
 }

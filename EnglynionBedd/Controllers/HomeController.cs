@@ -8,11 +8,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using EnglynionBedd.Models;
 using Microsoft.AspNetCore.Http;
+using EnglynionBedd.Endidau;
+using EnglynionBedd.Gwasanaethau;
+using Microsoft.Extensions.Options;
 
 namespace EnglynionBedd.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly IGwasanaethauGwybodol _gwasanaethauGwybodol;
+
+        public HomeController(IGwasanaethauGwybodol gwasanaethauGwybodol)
+        {
+            _gwasanaethauGwybodol = gwasanaethauGwybodol;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -21,7 +31,7 @@ namespace EnglynionBedd.Controllers
         [HttpPost]
         public async Task<IActionResult> LlwythoDelwedd(IFormFile ffeil)
         {
-            var gwybodaeth = new GwybodaethDelwedd();
+            GwybodaethDelwedd gwybodaeth = new GwybodaethDelwedd();
 
             if (ffeil == null || ffeil.Length == 0)
                 return Content("heb ddewis ffeil");
@@ -29,14 +39,18 @@ namespace EnglynionBedd.Controllers
             using (var ffrwd = new MemoryStream())
             {
                 await ffeil.CopyToAsync(ffrwd);
-                gwybodaeth.Delwedd = ffrwd.ToArray();
+                gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestunArgraffedig(ffrwd.ToArray());
             }
 
             return View(gwybodaeth);
         }
 
+        [HttpPost]
+        public async Task<IActionResult> ArbedBeddargraff(Beddargraff beddargraff)
+        {
+            return View(beddargraff);
+        }
         
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

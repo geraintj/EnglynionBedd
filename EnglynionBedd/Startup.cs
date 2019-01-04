@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using EnglynionBedd.Gwasanaethau;
+using EnglynionBedd.Gwasanaethau.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,6 +34,10 @@ namespace EnglynionBedd
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            services.Configure<Gosodiadau>(options => Configuration.GetSection("Gosodiadau").Bind(options));
+
+            services.AddTransient<IGwasanaethauGwybodol, GwasanaethauGwybodol>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

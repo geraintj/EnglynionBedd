@@ -1,4 +1,4 @@
-﻿namespace EnglynionBedd.Models
+﻿namespace EnglynionBedd.Endidau
 {
     public class GwybodaethDelwedd
     {
