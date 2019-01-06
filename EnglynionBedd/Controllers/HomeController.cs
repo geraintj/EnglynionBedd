@@ -17,10 +17,12 @@ namespace EnglynionBedd.Controllers
     public class HomeController : Controller
     {
         private readonly IGwasanaethauGwybodol _gwasanaethauGwybodol;
+        private readonly ICronfaBeddargraff _cronfaBeddargraff;
 
-        public HomeController(IGwasanaethauGwybodol gwasanaethauGwybodol)
+        public HomeController(IGwasanaethauGwybodol gwasanaethauGwybodol, ICronfaBeddargraff cronfaBeddargraff)
         {
             _gwasanaethauGwybodol = gwasanaethauGwybodol;
+            _cronfaBeddargraff = cronfaBeddargraff;
         }
 
         public IActionResult Index()
@@ -39,7 +41,7 @@ namespace EnglynionBedd.Controllers
             using (var ffrwd = new MemoryStream())
             {
                 await ffeil.CopyToAsync(ffrwd);
-                gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestunArgraffedig(ffrwd.ToArray());
+                gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestun(ffrwd.ToArray(), true);
             }
 
             return View(gwybodaeth);

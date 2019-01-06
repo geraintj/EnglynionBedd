@@ -38,6 +38,7 @@ namespace EnglynionBedd
             services.Configure<Gosodiadau>(options => Configuration.GetSection("Gosodiadau").Bind(options));
 
             services.AddTransient<IGwasanaethauGwybodol, GwasanaethauGwybodol>();
+            services.AddTransient<ICronfaBeddargraff, CronfaBeddargraff>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }

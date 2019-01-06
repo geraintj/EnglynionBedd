@@ -8,5 +8,7 @@
         public string CyfeiriadBasDdata { get; set; }
         public string EnwBasDdata { get; set; }
         public string Casgliad { get; set; }
+        public string LlinynCysylltuStorfa { get; set; }
+        public string EnwAmlwyth { get; set; }
     }
 }
