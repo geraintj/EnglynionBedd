@@ -1,50 +1,38 @@
 ﻿@model EnglynionBedd.Endidau.GwybodaethDelwedd
 
-@{
-    var base64 = Convert.ToBase64String(Model.Delwedd);
-    var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
-}
+<h2>Llwytho Delwedd</h2>
 
-
-<h2>LlwythoDelwedd</h2>
-
-<h4>GwybodaethDelwedd</h4>
 <hr />
-<form asp-action="LlwythoDelwedd">
+<form asp-action="ArbedBeddargraff">
     <div class="row">
         <div class="col-md-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <img src="@imgSrc" />
+                <img src="@Model.CyfeiriadDelwedd" style="max-width: 100%"/>
             </div>
             <div class="form-group">
-                <label asp-for="status" class="control-label"></label>
-                <input asp-for="status" class="form-control" />
-                <span asp-validation-for="status" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <div class="checkbox">
+                <div class="form-control">
                     <label>
-                        <input asp-for="succeeded" /> @Html.DisplayNameFor(model => model.succeeded)
+                        <input asp-for="EnwBedd" /> @Html.DisplayNameFor(model => model.EnwBedd)
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div class="form-control">
                     <label>
-                        <input asp-for="failed" /> @Html.DisplayNameFor(model => model.failed)
+                        <input asp-for="Mynwent" /> @Html.DisplayNameFor(model => model.Mynwent)
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <div class="checkbox">
+                <div class="form-control">
                     <label>
-                        <input asp-for="finished" /> @Html.DisplayNameFor(model => model.finished)
+                        <input asp-for="Dyddiad" /> @Html.DisplayNameFor(model => model.Dyddiad)
                     </label>
                 </div>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Arbed" class="btn btn-default" />
             </div>
         </div>
         <div class="col-md-4">
@@ -52,7 +40,7 @@
                 @{
                     foreach (var line in Model.recognitionResult.lines)
                     {
-                        <input class="form-control" value="@line.text"/>
+                        <input class="form-control" value="@line.text" name="Llinellau"/>
                     }
                 }
             </div>

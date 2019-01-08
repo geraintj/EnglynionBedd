@@ -42,14 +42,24 @@ namespace EnglynionBedd.Controllers
             {
                 await ffeil.CopyToAsync(ffrwd);
                 gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestun(ffrwd.ToArray(), true);
+                gwybodaeth.CyfeiriadDelwedd = await _cronfaBeddargraff.ArbedDelwedd(ffrwd.ToArray());
             }
 
             return View(gwybodaeth);
         }
 
         [HttpPost]
-        public async Task<IActionResult> ArbedBeddargraff(Beddargraff beddargraff)
+        public async Task<IActionResult> ArbedBeddargraff(GwybodaethDelwedd gwybodaeth)
         {
+            var beddargraff = new Beddargraff()
+            {
+                CyfeiriadDelwedd = gwybodaeth.CyfeiriadDelwedd,
+                EnwBedd = gwybodaeth.EnwBedd,
+                Mynwent = gwybodaeth.Mynwent,
+                Dyddiad = gwybodaeth.Dyddiad,
+                Llinellau = gwybodaeth.Llinellau
+            };
+            await _cronfaBeddargraff.ArbedBeddargraff(beddargraff);
             return View(beddargraff);
         }
         

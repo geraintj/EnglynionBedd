@@ -89,7 +89,6 @@ namespace EnglynionBedd.Gwasanaethau
                 }
 
                 gwybodaeth = JsonConvert.DeserializeObject<GwybodaethDelwedd>(contentString);
-                gwybodaeth.Delwedd = delwedd;
                 return gwybodaeth;
             }
             catch (Exception e)

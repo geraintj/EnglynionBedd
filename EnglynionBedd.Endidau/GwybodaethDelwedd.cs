@@ -1,12 +1,14 @@
-﻿namespace EnglynionBedd.Endidau
+﻿using System.Collections.Generic;
+
+namespace EnglynionBedd.Endidau
 {
     public class GwybodaethDelwedd
     {
-        public byte[] Delwedd { get; set; }
-        public string status { get; set; }
-        public bool succeeded { get; set; }
-        public bool failed { get; set; }
-        public bool finished { get;set; }
+        public string CyfeiriadDelwedd { get; set; }
+        public string EnwBedd { get; set; }
+        public string Mynwent { get; set; }
+        public string Dyddiad { get; set; }
+        public List<string> Llinellau { get; set; }
         public RecognitionResult recognitionResult {get;set;}
     }
 }
