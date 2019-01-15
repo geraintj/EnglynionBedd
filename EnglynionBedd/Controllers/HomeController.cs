@@ -60,9 +60,17 @@ namespace EnglynionBedd.Controllers
                 Llinellau = gwybodaeth.Llinellau
             };
             await _cronfaBeddargraff.ArbedBeddargraff(beddargraff);
-            return View(beddargraff);
+            return RedirectToAction("RhestruBeddargrafiadau");
+            //return View(beddargraff);
         }
-        
+
+        [HttpGet]
+        public async Task<IActionResult> RhestruBeddargrafiadau()
+        {
+            var rhestrBeddargraffiadau = await _cronfaBeddargraff.AdalwBeddargraffiadau();
+            return View(rhestrBeddargraffiadau);
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

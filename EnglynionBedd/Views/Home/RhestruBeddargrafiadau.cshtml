@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EnglynionBedd.Endidau.Beddargraff>
+
+@{
+    ViewData["Title"] = "RhestruBeddargrafiadau";
+}
+
+<h2>Rhestr o Feddargrafiadau</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnwBedd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mynwent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dyddiad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CyfeiriadDelwedd)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnwBedd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mynwent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dyddiad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CyfeiriadDelwedd)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
