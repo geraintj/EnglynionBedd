@@ -11,8 +11,31 @@
                 <img src="@Model.CyfeiriadDelwedd" style="max-width: 100%" />
                 <input asp-for="CyfeiriadDelwedd" type="hidden" />
             </div>
+        </div>
+        <div class="col-md-4">
             <div class="form-group">
-                <p>Llanwch y canlynol er mwyn adnabod a chwilio am ddata'r ddelwedd yma.</p>
+                <p>Gallwch wirio'r testun yn y blychau canlynol ac yna ei gopio a'i ludio i'r blychau priodol gyferbyn.</p>
+            </div>
+            @{
+                foreach (var line in Model.recognitionResult.lines)
+                {
+                    <div class="form-group">
+                        <input class="entry form-control" value="@line.text" draggable="true" name="Llinellau" />
+                        <span class="input-group-btn">
+                            <button class="btn btn-success btn-add" type="button">
+                                <span class="glyphicon glyphicon-plus"></span>
+                            </button>
+                        </span>
+                    </div>
+                }
+            }
+            <div class="form-group">
+                <input type="submit" value="Arbed" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <p>Llanwch y canlynol, a gwirio'r testun os y mynnech, cyn arbed yr englyn i'r fas-ddata.</p>
             </div>
             <div class="form-group">
                 <div class="form-control">
@@ -35,79 +58,42 @@
                     </label>
                 </div>
             </div>
-        </div>
-        <div class="controls col-md-4">
             <div class="form-group">
-                <p>Gallwch wirio'r testun yn y blychau canlynol cyn ei arbed i'r fas-ddata</p>
+                <div class="form-control">
+                    <label>
+                        <input asp-for="Llinell1" /> @Html.DisplayNameFor(model => model.Llinell1)
+                    </label>
+                </div>
             </div>
-            @{
-                foreach (var line in Model.recognitionResult.lines)
-                {
-                    <div class="form-group">
-                        <input class="entry form-control" value="@line.text" draggable="true" name="Llinellau" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-success btn-add" type="button">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
-                    </div>
-                }
-            }
             <div class="form-group">
-                <input type="submit" value="Arbed" class="btn btn-default" />
+                <div class="form-control">
+                    <label>
+                        <input asp-for="Llinell2" /> @Html.DisplayNameFor(model => model.Llinell1)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-control">
+                    <label>
+                        <input asp-for="Llinell3" /> @Html.DisplayNameFor(model => model.Llinell1)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-control">
+                    <label>
+                        <input asp-for="Llinell4" /> @Html.DisplayNameFor(model => model.Llinell1)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="form-control">
+                    <label>
+                        <input asp-for="Bardd" /> @Html.DisplayNameFor(model => model.Bardd)
+                    </label>
+                </div>
             </div>
 
         </div>
     </div>
 </form>
-@section scripts
-{
-    <script type="text/javascript">
-        //$(function()
-        //{
-        //    $(document).on('click', '.btn-add', function(e) {
-        //        alert("hi");
-        //        e.preventDefault();
-
-        //        var controlForm = $('.controls form:first'),
-        //            currentEntry = $(this).parents('.entry:first'),
-        //            newEntry = $(currentEntry.clone()).appendTo(controlForm);
-
-        //        newEntry.find('input').val('');
-        //        controlForm.find('.entry:not(:last) .btn-add')
-        //            .removeClass('btn-add').addClass('btn-remove')
-        //            .removeClass('btn-success').addClass('btn-danger')
-        //            .html('<span class="glyphicon glyphicon-minus"></span>');
-        //    }).on('click', '.btn-remove', function(e)
-        //    {
-        //        $(this).parents('.entry:first').remove();
-
-        //        e.preventDefault();
-        //        return false;
-        //    });
-        //});
-        $(function()
-        {
-            $(document).on('click', '.btn-add', function(e)
-            {
-                e.preventDefault();
-                var controlForm = $(this).parents('.controls form:first'),
-                    currentEntry = $(this).parents('.entry:first'),
-                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
-                newEntry.find('input').val('');
-                controlForm.find('.entry:not(:last) .btn-add')
-                    .removeClass('btn-add').addClass('btn-remove')
-                    .removeClass('btn-success').addClass('btn-danger')
-                    .html('');
-            }).on('click', '.btn-remove', function(e)
-            {
-                $(this).parents('.entry:first').remove();
-                e.preventDefault();
-                return false;
-            });
-        });
-    </script>
-}
-
-
-

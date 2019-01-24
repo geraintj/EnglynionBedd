@@ -1,4 +1,4 @@
-﻿@model IEnumerable<EnglynionBedd.Endidau.Beddargraff>
+﻿@model IEnumerable<EnglynionBedd.Endidau.Englyn>
 
 @{
     ViewData["Title"] = "RhestruBeddargrafiadau";
@@ -14,7 +14,7 @@
                 @Html.DisplayNameFor(model => model.Id)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EnwBedd)
+                @Html.DisplayNameFor(model => model.Bedd)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Mynwent)
@@ -35,7 +35,7 @@
                 @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EnwBedd)
+                @Html.DisplayFor(modelItem => item.Bedd)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Mynwent)

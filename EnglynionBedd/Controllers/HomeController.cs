@@ -17,12 +17,12 @@ namespace EnglynionBedd.Controllers
     public class HomeController : Controller
     {
         private readonly IGwasanaethauGwybodol _gwasanaethauGwybodol;
-        private readonly ICronfaBeddargraff _cronfaBeddargraff;
+        private readonly ICronfaEnglynion _cronfaEnglynion;
 
-        public HomeController(IGwasanaethauGwybodol gwasanaethauGwybodol, ICronfaBeddargraff cronfaBeddargraff)
+        public HomeController(IGwasanaethauGwybodol gwasanaethauGwybodol, ICronfaEnglynion cronfaEnlEnglynion)
         {
             _gwasanaethauGwybodol = gwasanaethauGwybodol;
-            _cronfaBeddargraff = cronfaBeddargraff;
+            _cronfaEnglynion = cronfaEnlEnglynion;
         }
 
         public IActionResult Index()
@@ -42,7 +42,7 @@ namespace EnglynionBedd.Controllers
             {
                 await ffeil.CopyToAsync(ffrwd);
                 gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestun(ffrwd.ToArray(), true);
-                gwybodaeth.CyfeiriadDelwedd = await _cronfaBeddargraff.ArbedDelwedd(ffrwd.ToArray());
+                gwybodaeth.CyfeiriadDelwedd = await _cronfaEnglynion.ArbedDelwedd(ffrwd.ToArray());
             }
 
             return View(gwybodaeth);
@@ -51,15 +51,19 @@ namespace EnglynionBedd.Controllers
         [HttpPost]
         public async Task<IActionResult> ArbedBeddargraff(GwybodaethDelwedd gwybodaeth)
         {
-            var beddargraff = new Beddargraff()
+            var englyn = new Englyn()
             {
                 CyfeiriadDelwedd = gwybodaeth.CyfeiriadDelwedd,
-                EnwBedd = gwybodaeth.EnwBedd,
+                Bedd = gwybodaeth.EnwBedd,
                 Mynwent = gwybodaeth.Mynwent,
                 Dyddiad = gwybodaeth.Dyddiad,
-                Llinellau = gwybodaeth.Llinellau
+                Llinell1 = gwybodaeth.Llinell1,
+                Llinell2 = gwybodaeth.Llinell2,
+                Llinell3 = gwybodaeth.Llinell3,
+                Llinell4 = gwybodaeth.Llinell4,
+                Bardd = gwybodaeth.Bardd
             };
-            await _cronfaBeddargraff.ArbedBeddargraff(beddargraff);
+            await _cronfaEnglynion.ArbedEnglyn(englyn);
             return RedirectToAction("RhestruBeddargrafiadau");
             //return View(beddargraff);
         }
@@ -67,7 +71,7 @@ namespace EnglynionBedd.Controllers
         [HttpGet]
         public async Task<IActionResult> RhestruBeddargrafiadau()
         {
-            var rhestrBeddargraffiadau = await _cronfaBeddargraff.AdalwBeddargraffiadau();
+            var rhestrBeddargraffiadau = await _cronfaEnglynion.AdalwEnglynion();
             return View(rhestrBeddargraffiadau);
         }
 

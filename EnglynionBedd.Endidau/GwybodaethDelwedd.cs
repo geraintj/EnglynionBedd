@@ -12,7 +12,13 @@ namespace EnglynionBedd.Endidau
         public string Mynwent { get; set; }
         [Display(Name = "Dyddiad")]
         public string Dyddiad { get; set; }
-        public List<string> Llinellau { get; set; }
+        [Display(Name = "Llinellau'r englyn")]
+        public string Llinell1 { get; set; }
+        public string Llinell2 { get; set; }
+        public string Llinell3 { get; set; }
+        public string Llinell4 { get; set; }
+        [Display(Name = "Bardd")]
+        public string Bardd { get; set; }
         public RecognitionResult recognitionResult {get;set;}
     }
 }
