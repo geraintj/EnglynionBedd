@@ -3,7 +3,7 @@
 <h2>Llwytho Delwedd</h2>
 
 <hr />
-<form asp-action="ArbedBeddargraff">
+<form asp-action="ArbedBeddargraff" class="form-inline">
     <div class="row">
         <div class="col-md-4">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -14,18 +14,14 @@
         </div>
         <div class="col-md-4">
             <div class="form-group">
-                <p>Gallwch wirio'r testun yn y blychau canlynol ac yna ei gopio a'i ludio i'r blychau priodol gyferbyn.</p>
+                <p>Gallwch wirio'r testun yn y blychau canlynol ac yna ei gopïo a'i ludio i'r blychau priodol gyferbyn.</p>
             </div>
             @{
                 foreach (var line in Model.recognitionResult.lines)
                 {
                     <div class="form-group">
                         <input class="entry form-control" value="@line.text" draggable="true" name="Llinellau" />
-                        <span class="input-group-btn">
-                            <button class="btn btn-success btn-add" type="button">
-                                <span class="glyphicon glyphicon-plus"></span>
-                            </button>
-                        </span>
+                        <a class="btn btn-default" href="#"><i class="fa fa-fw fa-copy"></i></a>
                     </div>
                 }
             }
@@ -40,56 +36,56 @@
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="EnwBedd" /> @Html.DisplayNameFor(model => model.EnwBedd)
+                        @Html.DisplayNameFor(model => model.EnwBedd)<input asp-for="EnwBedd" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Mynwent" /> @Html.DisplayNameFor(model => model.Mynwent)
+                        @Html.DisplayNameFor(model => model.Mynwent) <input asp-for="Mynwent" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Dyddiad" /> @Html.DisplayNameFor(model => model.Dyddiad)
+                        @Html.DisplayNameFor(model => model.Dyddiad) <input asp-for="Dyddiad" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Llinell1" /> @Html.DisplayNameFor(model => model.Llinell1)
+                        @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell1" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Llinell2" /> @Html.DisplayNameFor(model => model.Llinell1)
+                        @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell2" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Llinell3" /> @Html.DisplayNameFor(model => model.Llinell1)
+                         @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell3" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Llinell4" /> @Html.DisplayNameFor(model => model.Llinell1)
+                         @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell4" />
                     </label>
                 </div>
             </div>
             <div class="form-group">
                 <div class="form-control">
                     <label>
-                        <input asp-for="Bardd" /> @Html.DisplayNameFor(model => model.Bardd)
+                        @Html.DisplayNameFor(model => model.Bardd) <input asp-for="Bardd" />
                     </label>
                 </div>
             </div>
