@@ -36,8 +36,8 @@
                 <p>Llanwch y canlynol, a gwirio'r testun os y mynnech, cyn arbed yr englyn i'r fas-ddata.</p>
             </div>
             <div class="form-group">
-                @Html.DisplayNameFor(model => model.EnwBedd)<input asp-for="EnwBedd" />
-                <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                @Html.DisplayNameFor(model => model.EnwBedd)<input asp-for="EnwBedd" id="enwBedd" />
+                <button class="btn btn-default gludo" type="button" onclick="gludo('enwBedd')"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
             </div>
             <div class="form-group">
                 @Html.DisplayNameFor(model => model.Mynwent) <input asp-for="Mynwent" />
@@ -73,16 +73,16 @@
 @section Scripts
 {
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
+            var testun
+
             $('.copi').click(
-                function() {
-                    this.previousElementSibling.select();
-                    document.execCommand('copy');
+                function () {
+                    testun = this.previousElementSibling.value;
                 });
             $('.gludo').click(
-                function() {
-                    this.previousElementSibling.focus();
-                    document.execCommand('paste');
+                function () {
+                    this.previousElementSibling.value = testun;
                 });
         });
     </script>
