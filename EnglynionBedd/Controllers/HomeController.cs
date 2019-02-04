@@ -31,7 +31,7 @@ namespace EnglynionBedd.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> LlwythoDelwedd(IFormFile ffeil)
+        public async Task<IActionResult> LlwythoDelwedd(IFormFile ffeil, bool llawysgrifen = false)
         {
             GwybodaethDelwedd gwybodaeth = new GwybodaethDelwedd();
 
@@ -41,7 +41,7 @@ namespace EnglynionBedd.Controllers
             using (var ffrwd = new MemoryStream())
             {
                 await ffeil.CopyToAsync(ffrwd);
-                gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestun(ffrwd.ToArray(), true);
+                gwybodaeth = await _gwasanaethauGwybodol.DadansoddiTestun(ffrwd.ToArray(), !llawysgrifen);
                 gwybodaeth.CyfeiriadDelwedd = await _cronfaEnglynion.ArbedDelwedd(ffrwd.ToArray());
             }
 
@@ -64,15 +64,8 @@ namespace EnglynionBedd.Controllers
                 Bardd = gwybodaeth.Bardd
             };
             await _cronfaEnglynion.ArbedEnglyn(englyn);
-            return RedirectToAction("RhestruBeddargrafiadau");
+            return RedirectToAction("RhestruEnglynion", "Englyn");
             //return View(beddargraff);
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> RhestruBeddargrafiadau()
-        {
-            var rhestrBeddargraffiadau = await _cronfaEnglynion.AdalwEnglynion();
-            return View(rhestrBeddargraffiadau);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

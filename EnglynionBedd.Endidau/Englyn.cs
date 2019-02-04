@@ -27,8 +27,14 @@ namespace EnglynionBedd.Endidau
         public string Llinell3 { get; set; }
         [JsonProperty(propertyName: "llinell4")]
         public string Llinell4 { get; set; }
+
+        private string _bardd;
         [JsonProperty(propertyName: "bardd")]
-        public string Bardd { get; set; }
+        public string Bardd
+        {
+            get => string.IsNullOrEmpty(_bardd) ? "Anhysbys" : _bardd;
+            set => _bardd = value;
+        }
 
         public static explicit operator Englyn(Microsoft.Azure.Documents.Document v)
         {

@@ -35,8 +35,9 @@ namespace EnglynionBedd.Gwasanaethau
 
         public async Task<Englyn> AdalwEnglyn(string id)
         {
+            var opsiynau = new FeedOptions() {EnableCrossPartitionQuery = true};
             IDocumentQuery<Englyn> query = _client.CreateDocumentQuery<Englyn>(
-                    UriFactory.CreateDocumentCollectionUri(_gosodiadau.Value.EnwBasDdata, _gosodiadau.Value.Casgliad))
+                    UriFactory.CreateDocumentCollectionUri(_gosodiadau.Value.EnwBasDdata, _gosodiadau.Value.Casgliad), opsiynau)
                 .Where(d => d.Id == id)
                 .AsDocumentQuery();
 

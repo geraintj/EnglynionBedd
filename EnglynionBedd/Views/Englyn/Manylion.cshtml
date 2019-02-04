@@ -1,0 +1,51 @@
+﻿@model EnglynionBedd.Endidau.Englyn
+
+@{
+    ViewData["Title"] = "Manylion";
+}
+
+<h2>@Html.DisplayFor(model => model.Bedd), @Html.DisplayFor(model => model.Mynwent)</h2>
+<div class="row">
+    <hr />
+    <div class="col-md-6">
+        <img src="@Model.CyfeiriadDelwedd" style="max-width: 100%" />
+    </div>
+    <div class="col-md-6">
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Bedd)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Bedd)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Mynwent)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Mynwent)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Dyddiad)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Dyddiad)
+            </dd>
+            <dt>
+                <p>Englyn</p>
+            </dt>
+            <dd>
+                <p>@Html.DisplayFor(model => model.Llinell1)</p>
+                <p>@Html.DisplayFor(model => model.Llinell2)</p>
+                <p>@Html.DisplayFor(model => model.Llinell3)</p>
+                <p>@Html.DisplayFor(model => model.Llinell4)</p>
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Bardd)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Bardd)
+            </dd>
+        </dl>
+    </div>
+</div>
+
