@@ -15,13 +15,14 @@ namespace EnglynionBedd.Gwasanaethau
     public class CronfaEnglynion : ICronfaEnglynion
     {
         private readonly IOptions<Gosodiadau> _gosodiadau;
+        private readonly IOptions<GosodiadauAllweddgell> _gosodiadauAllweddgell;
         private readonly DocumentClient _client;
 
-        public CronfaEnglynion(IOptions<Gosodiadau> gosodiadau)
+        public CronfaEnglynion(IOptions<Gosodiadau> gosodiadau, IOptions<GosodiadauAllweddgell> gosodiadauAllweddgell)
         {
             _gosodiadau = gosodiadau;
-            _client = new DocumentClient(new Uri(_gosodiadau.Value.CyfeiriadBasDdata),
-                _gosodiadau.Value.AllweddBasDdata);
+            _gosodiadauAllweddgell = gosodiadauAllweddgell;
+            _client = new DocumentClient(new Uri(_gosodiadau.Value.CyfeiriadBasDdata), _gosodiadauAllweddgell.Value.BasDdataCosmos.ToString());
         }
 
         public async Task<Englyn> ArbedEnglyn(Englyn englyn)
@@ -64,7 +65,7 @@ namespace EnglynionBedd.Gwasanaethau
         public async Task<string> ArbedDelwedd(byte[] delwedd)
         {
             CloudStorageAccount storageAccount = null;
-            CloudStorageAccount.TryParse(_gosodiadau.Value.LlinynCysylltuStorfa, out storageAccount);
+            CloudStorageAccount.TryParse(string.Format(_gosodiadau.Value.LlinynCysylltuStorfa, _gosodiadauAllweddgell.Value.CyfrifStorfa), out storageAccount);
             CloudBlobClient cloudBlobClient = storageAccount.CreateCloudBlobClient();
             CloudBlobContainer cloudBlobContainer = cloudBlobClient.GetContainerReference(_gosodiadau.Value.EnwAmlwyth);
             var enwBlob = Guid.NewGuid().ToString();

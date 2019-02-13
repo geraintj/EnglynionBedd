@@ -20,7 +20,7 @@
             <div class="form-group">
                 @{foreach (var line in Model.recognitionResult.lines)
                   {
-                      <input class="form-control" value="@line.text" draggable="true" name="Llinellau" />
+                      <input class="form-control-lg" value="@line.text" draggable="true" name="Llinellau" />
                       <button class="btn btn-default copi" type="button"><i class="fa fa-fw fa-copy" title="Copïo"></i></button>
                   }
 
@@ -28,42 +28,82 @@
             </div>
         </div>
         <div class="col-md-4">
-            <div class="form-group">
+            <div class="form-row">
                 <p>Llanwch y canlynol, a gwirio'r testun os y mynnech, cyn arbed yr englyn i'r fas-ddata.</p>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.EnwBedd)<input asp-for="EnwBedd" id="enwBedd" />
-                <button class="btn btn-default gludo" type="button" onclick="gludo('enwBedd')"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.EnwBedd)
+                </div>
+                <div class="col">
+                    <input asp-for="EnwBedd" id="enwBedd" />
+                    <button class="btn btn-default gludo" type="button" onclick="gludo('enwBedd')"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Mynwent) <input asp-for="Mynwent" />
-                <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Mynwent)
+                </div>
+                <div class="col">
+                    <input asp-for="Mynwent" />
+                    <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Dyddiad) <input asp-for="Dyddiad" />
-                <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Dyddiad)
+                </div>
+                <div class="col">
+                    <input asp-for="Dyddiad" />
+                    <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell1" />
-                <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Llinell1)
+                </div>
+                <div class="col">
+                    <input asp-for="Llinell1" />
+                    <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell2" />
-                <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Llinell1)
+                </div>
+                <div class="col">
+                    <input asp-for="Llinell2" />
+                    <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell3" />
-                <abutton class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></abutton>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Llinell1)
+                </div>
+                <div class="col">
+                    <input asp-for="Llinell3" />
+                    <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Llinell1) <input asp-for="Llinell4" />
-                <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Llinell1)
+                </div>
+                <div class="col">
+                    <input asp-for="Llinell4" />
+                    <button class="btn btn-default gludo" type="button"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
-                @Html.DisplayNameFor(model => model.Bardd) <input asp-for="Bardd" />
-                <button class="btn btn-default gludo"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+            <div class="form-row">
+                <div class="col">
+                    @Html.DisplayNameFor(model => model.Bardd)
+                </div>
+                <div class="col">
+                    <input asp-for="Bardd" />
+                    <button class="btn btn-default gludo"><i class="fa fa-fw fa-paste" title="Gludo"></i></button>
+                </div>
             </div>
-            <div class="form-group">
+            <div class="form-row">
                 <input type="submit" value="Arbed" class="btn btn-default" />
             </div>
         </div>

@@ -36,6 +36,7 @@ namespace EnglynionBedd
             });
 
             services.Configure<Gosodiadau>(options => Configuration.GetSection("Gosodiadau").Bind(options));
+            services.Configure<GosodiadauAllweddgell>(Configuration);
 
             services.AddTransient<IGwasanaethauGwybodol, GwasanaethauGwybodol>();
             services.AddTransient<ICronfaEnglynion, CronfaEnglynion>();

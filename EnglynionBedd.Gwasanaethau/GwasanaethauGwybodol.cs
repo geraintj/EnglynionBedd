@@ -13,10 +13,12 @@ namespace EnglynionBedd.Gwasanaethau
     public class GwasanaethauGwybodol : IGwasanaethauGwybodol
     {
         private readonly IOptions<Gosodiadau> _gosodiadau;
+        private readonly IOptions<GosodiadauAllweddgell> _gosodiadauAllweddgell;
 
-        public GwasanaethauGwybodol(IOptions<Gosodiadau> gosodiadau)
+        public GwasanaethauGwybodol(IOptions<Gosodiadau> gosodiadau, IOptions<GosodiadauAllweddgell> gosodiadauAllweddgell)
         {
             _gosodiadau = gosodiadau;
+            _gosodiadauAllweddgell = gosodiadauAllweddgell;
         }
 
         public async Task<GwybodaethDelwedd> DadansoddiTestun(byte[] delwedd, bool argraffedig)
@@ -29,7 +31,7 @@ namespace EnglynionBedd.Gwasanaethau
 
                 // Request headers.
                 client.DefaultRequestHeaders.Add(
-                    "Ocp-Apim-Subscription-Key", _gosodiadau.Value.AllweddTanysgrifiad);
+                    "Ocp-Apim-Subscription-Key", _gosodiadauAllweddgell.Value.TanysgrifiadDA);
 
                 // Request parameters. 
                 // The language parameter doesn't specify a language, so the 
