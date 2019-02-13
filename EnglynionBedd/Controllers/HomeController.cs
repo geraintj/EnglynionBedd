@@ -49,7 +49,7 @@ namespace EnglynionBedd.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ArbedBeddargraff(GwybodaethDelwedd gwybodaeth)
+        public async Task<IActionResult> ArbedEnglyn(GwybodaethDelwedd gwybodaeth)
         {
             var englyn = new Englyn()
             {
@@ -65,7 +65,6 @@ namespace EnglynionBedd.Controllers
             };
             await _cronfaEnglynion.ArbedEnglyn(englyn);
             return RedirectToAction("RhestruEnglynion", "Englyn");
-            //return View(beddargraff);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

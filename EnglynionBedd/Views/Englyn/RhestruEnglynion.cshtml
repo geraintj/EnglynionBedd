@@ -10,9 +10,9 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>
+            <!--<th>
+        @Html.DisplayNameFor(model => model.Id)
+    </th>-->
             <th>
                 @Html.DisplayNameFor(model => model.Bedd)
             </th>
@@ -22,18 +22,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Dyddiad)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CyfeiriadDelwedd)
-            </th>
+            <!--<th>
+        @Html.DisplayNameFor(model => model.CyfeiriadDelwedd)
+    </th>-->
             <th></th>
         </tr>
     </thead>
     <tbody>
 @foreach (var eitem in Model) {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => eitem.Id)
-            </td>
+            <!--<td>
+        @Html.DisplayFor(modelItem => eitem.Id)
+    </td>-->
             <td>
                 @Html.DisplayFor(modelItem => eitem.Bedd)
             </td>
@@ -43,13 +43,13 @@
             <td>
                 @Html.DisplayFor(modelItem => eitem.Dyddiad)
             </td>
+            <!--<td>
+        @Html.DisplayFor(modelItem => eitem.CyfeiriadDelwedd)
+    </td>-->
             <td>
-                @Html.DisplayFor(modelItem => eitem.CyfeiriadDelwedd)
-            </td>
-            <td>
-                @Html.ActionLink("Golygu", "Golygu", new {  id=eitem.Id  }) |
-                @Html.ActionLink("Manylion", "Manylion", new { id = eitem.Id }) |
-                @Html.ActionLink("Diddymu", "Diddymu", new { id = eitem.Id })
+                @Html.ActionLink("Golygu", "Golygu", new { id = eitem.Id }) |
+                @Html.ActionLink("Manylion", "Manylion", new { id = eitem.Id })
+                <!--| @Html.ActionLink("Diddymu", "Diddymu", new { id = eitem.Id })-->
             </td>
         </tr>
 }

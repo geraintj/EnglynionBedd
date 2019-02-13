@@ -42,18 +42,10 @@ namespace EnglynionBedd.Controllers
         // POST: Englyn/Golygu/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Golygu(Englyn englyn)
+        public async Task<ActionResult> Golygu(Englyn englyn)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(RhestruEnglynion));
-            }
-            catch
-            {
-                return View();
-            }
+            await _cronfaEnglynion.GolyguEnglyn(englyn);
+            return RedirectToAction(nameof(RhestruEnglynion));
         }
 
         // GET: Englyn/Diddymu/5

@@ -10,5 +10,6 @@ namespace EnglynionBedd.Gwasanaethau
         Task<Englyn> AdalwEnglyn(string id);
         Task<List<Englyn>> AdalwEnglynion();
         Task<string> ArbedDelwedd(byte[] delwedd);
+        Task<Englyn> GolyguEnglyn(Englyn englyn);
     }
 }

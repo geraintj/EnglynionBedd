@@ -46,10 +46,13 @@
                 @Html.DisplayFor(model => model.Bardd)
             </dd>
         </dl>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-5">
+                <a asp-action="Golygu" asp-route-id="@Model.Id" class="btn btn-default">Golygu</a>
+                <a asp-action="RhestruEnglynion" class="btn btn-default">Yn ôl i'r rhestr</a>
+            </div>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="RhestruEnglynion">Yn ôl i'r rhestr</a>
 </div>
 

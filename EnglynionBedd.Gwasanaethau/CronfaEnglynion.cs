@@ -73,5 +73,14 @@ namespace EnglynionBedd.Gwasanaethau
             await blob.UploadFromByteArrayAsync(delwedd, 0, delwedd.Length);
             return blob.Uri.AbsoluteUri;
         }
+
+        public async Task<Englyn> GolyguEnglyn(Englyn englyn)
+        {
+            var canlyniad =
+                await _client.ReplaceDocumentAsync(
+                    UriFactory.CreateDocumentUri(_gosodiadau.Value.EnwBasDdata, _gosodiadau.Value.Casgliad, englyn.Id),
+                    englyn);
+            return (Englyn)canlyniad.Resource;
+        }
     }
 }
