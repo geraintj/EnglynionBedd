@@ -34,11 +34,22 @@ namespace EnglynionBedd
             services.Configure<Gosodiadau>(options => Configuration.GetSection("Gosodiadau").Bind(options));
             services.Configure<GosodiadauAllweddgell>(Configuration);
             
-            services.AddAuthentication().AddFacebook(facebookOptions =>
-            {
-                facebookOptions.AppId = Configuration["Gosodiadau:IdFacebook"];
-                facebookOptions.AppSecret = Configuration["CyfrinachFacebook"];
-            });
+            services.AddAuthentication()
+                .AddFacebook(facebookOptions =>
+                    {
+                        facebookOptions.AppId = Configuration["Gosodiadau:IdFacebook"];
+                        facebookOptions.AppSecret = Configuration["CyfrinachFacebook"];
+                    })
+                .AddGoogle(googleOptions =>
+                    {
+                        googleOptions.ClientId = Configuration["Gosodiadau:IdGoogle"];
+                        googleOptions.ClientSecret = Configuration["CyfrinachGoogle"];
+                    })
+                .AddMicrosoftAccount(microsoftOptions =>
+                    {
+                        microsoftOptions.ClientId = Configuration["Gosodiadau:IdMicrosoft"];
+                        microsoftOptions.ClientSecret = Configuration["CyfrinachMicrosoft"];
+                    });
 
             services.AddTransient<IGwasanaethauGwybodol, GwasanaethauGwybodol>();
             services.AddTransient<ICronfaEnglynion, CronfaEnglynion>();
