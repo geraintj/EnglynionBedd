@@ -10,6 +10,7 @@ using EnglynionBedd.Models;
 using Microsoft.AspNetCore.Http;
 using EnglynionBedd.Endidau;
 using EnglynionBedd.Gwasanaethau;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 
 namespace EnglynionBedd.Controllers
@@ -30,8 +31,15 @@ namespace EnglynionBedd.Controllers
             return View();
         }
 
+        [Authorize]
+        public IActionResult LlwythoDelwedd()
+        {
+            return View();
+        }
+
+        [Authorize]
         [HttpPost]
-        public async Task<IActionResult> LlwythoDelwedd(IFormFile ffeil, bool llawysgrifen = false)
+        public async Task<IActionResult> DadansoddiDelwedd(IFormFile ffeil, bool llawysgrifen = false)
         {
             GwybodaethDelwedd gwybodaeth = new GwybodaethDelwedd();
 
@@ -48,6 +56,7 @@ namespace EnglynionBedd.Controllers
             return View(gwybodaeth);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> ArbedEnglyn(GwybodaethDelwedd gwybodaeth)
         {

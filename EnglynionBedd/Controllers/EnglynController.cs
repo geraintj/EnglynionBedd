@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using EnglynionBedd.Endidau;
 using EnglynionBedd.Gwasanaethau;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EnglynionBedd.Controllers
 {
+    [Authorize]
     public class EnglynController : Controller
     {
         private readonly ICronfaEnglynion _cronfaEnglynion;
