@@ -3,6 +3,8 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>5584d979-8051-4fb1-ac43-539da2dd5fd7</UserSecretsId>
+    <ApplicationInsightsResourceId>/subscriptions/1f31e7f4-c79d-4086-a75f-75c4be130475/resourcegroups/EnglynionBedd/providers/microsoft.insights/components/englynionbedd</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/1f31e7f4-c79d-4086-a75f-75c4be130475/resourcegroups/EnglynionBedd/providers/microsoft.insights/components/englynionbedd</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
@@ -23,6 +26,10 @@
   <ItemGroup>
     <ProjectReference Include="..\EnglynionBedd.Endidau\EnglynionBedd.Endidau.csproj" />
     <ProjectReference Include="..\EnglynionBedd.Gwasanaethau\EnglynionBedd.Gwasanaethau.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services" />
   </ItemGroup>
 
 </Project>

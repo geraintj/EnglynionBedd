@@ -16,6 +16,7 @@ namespace EnglynionBedd
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .UseApplicationInsights()
                 .ConfigureAppConfiguration((context, config) =>
                 {
                     var builtConfig = config.Build();
