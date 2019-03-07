@@ -1,21 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+using AspNetCore.Identity.DocumentDb;
 using EnglynionBedd.Gwasanaethau;
 using EnglynionBedd.Gwasanaethau.Configuration;
-using EnglynionBedd.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Azure.Documents;
+using Microsoft.Azure.Documents.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
+
 
 namespace EnglynionBedd
 {
@@ -33,7 +27,7 @@ namespace EnglynionBedd
         {
             services.Configure<Gosodiadau>(options => Configuration.GetSection("Gosodiadau").Bind(options));
             services.Configure<GosodiadauAllweddgell>(Configuration);
-            
+
             services.AddAuthentication()
                 .AddFacebook(facebookOptions =>
                     {
@@ -50,6 +44,17 @@ namespace EnglynionBedd
                         microsoftOptions.ClientId = Configuration["Gosodiadau:IdMicrosoft"];
                         microsoftOptions.ClientSecret = Configuration["CyfrinachMicrosoft"];
                     });
+
+            services.AddSingleton<IDocumentClient>(new DocumentClient(
+                new Uri(Configuration["Gosodiadau:CyfeiriadBasDdata"]), Configuration["BasDdataCosmos"]));
+
+            services.AddIdentity<DocumentDbIdentityUser, DocumentDbIdentityRole>()
+                .AddDocumentDbStores(options =>
+                {
+                    options.Database = Configuration["Gosodiadau:EnwBasDdata"];
+                    options.UserStoreDocumentCollection = Configuration["Gosodiadau:CasgliadDefnyddwyr"];
+                });
+
 
             services.AddTransient<IGwasanaethauGwybodol, GwasanaethauGwybodol>();
             services.AddTransient<ICronfaEnglynion, CronfaEnglynion>();
